@@ -1,0 +1,52 @@
+<%- include('partials/header') %>
+<style>
+    table {
+        border-collapse: collapse; /* Optional: Combines cell borders */
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid #000; /* Add borders to table cells */
+        padding: 8px; /* Optional: Add padding for better spacing */
+        text-align: left; /* Optional: Align text in cells */
+    }
+</style>
+<div>
+    <h1>All Users</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Username</th>
+                <th>Bank Accounts</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Bank</th>
+                <th>Branch</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>District</th>
+                <th>State</th>
+                <th>Bank Code</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% registeredUsers.forEach((user) => { %>
+                <tr>
+                    <td><%= user.user_id %></td>
+                    <td><%= user.user_name %></td>
+                    <td><%= user.back_accounts.join(', ') %></td>
+                    <td><%= user.id %></td>
+                    <td><%= user.name %></td>
+                    <td><%= user.accounts.bank %></td>
+                    <td><%= user.accounts.branch %></td>
+                    <td><%= user.accounts.address %></td>
+                    <td><%= user.accounts.city %></td>
+                    <td><%= user.accounts.district %></td>
+                    <td><%= user.accounts.state %></td>
+                    <td><%= user.accounts.bank_code %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+<%- include('partials/footer') %>

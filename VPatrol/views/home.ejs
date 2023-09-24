@@ -1,0 +1,60 @@
+<%- include('partials/header') %>
+<div>
+    <form action="/" method="POST">
+        <label>Type your ID to check registration</label>
+        <input name="user_id" type="number" placeholder="User ID" id="id" /><br>
+        <button type="submit">Check</button>
+        <p id="text">
+            <% if (isRegistered === true) { %>
+                You are registered
+            <% } else if (isRegistered === false) { %>
+                You are not registered
+            <% } else { %>
+                
+            <% } %>
+        </p>
+    </form>
+    
+        <form action="/allUsers" method="POST">
+            <label>Username</label>
+            <input name="user_name" type="text" placeholder="User Name" /><br>
+            <label>Name</label>
+            <input type="text" name="name" id=""><br>
+            <label>ID</label>
+            <input name="user_id" type="number" placeholder="User ID" id="id" /><br>
+            <label>Bank account</label>
+<input name="bank_accounts" type="text" placeholder="Account" />
+<div>
+            <h2>Accounts</h2>
+            <label>IFSC</label>
+            <input type="text" name="ifsc" id="ifscInput">
+            <label>Bank</label>
+            <input type="text" name="bank" id="bankInput"><br>
+            <label>Branch</label>
+            <input type="text" name="branch" id="branchInput"><br>
+            <label>Address</label>
+            <input type="text" name="address" id="addressInput"><br>
+            <label>City</label>
+            <input type="text" name="city" id="cityInput"><br>
+            <label>District</label>
+            <input type="text" name="district" id="districtInput"><br>
+            <label>State</label>
+            <input type="text" name="state" id="stateInput"><br>
+            <label>Bank Code</label>
+            <input type="text" name="bank_code" id="bankCodeInput"><br>
+            <div>
+            <h3>Weather</h3>
+            <label>Temperature</label>
+            <input type="text" name="temperature" id="temperatureInput">
+            <label>Humidity</label>
+            <input type="text" name="humidity" id="humidityInput">
+            </div>
+            </div>
+            <button name="submit" type="submit">Submit</button>
+    </form>
+</div>
+<%- include('partials/dataFeed') %>
+<%- include('partials/footer') %>
+
+
+

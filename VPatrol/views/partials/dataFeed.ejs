@@ -1,0 +1,73 @@
+<script>
+  // Get references to the input fields
+  const cityInput = document.getElementById("cityInput");
+  const temperatureInput = document.getElementById("temperatureInput");
+  const humidityInput = document.getElementById("humidityInput");
+
+  const ifscInput = document.getElementById("ifscInput");
+  const districtInput = document.getElementById("districtInput");
+  const stateInput = document.getElementById("stateInput");
+  const addressInput = document.getElementById("addressInput");
+  const bankInput = document.getElementById("bankInput");
+  const bankCodeInput = document.getElementById("bankCodeInput");
+  const branchInput = document.getElementById("branchInput");
+
+  ifscInput.addEventListener("input", async () => {
+    const ifsc = ifscInput.value;
+    const bank_url = `https://ifsc.razorpay.com/${ifsc}`;
+    console.log(fetch(bank_url));
+
+    // Clear bank details fields if IFSC code is cleared
+    if (!ifsc) {
+      districtInput.value = "";
+      stateInput.value = "";
+      addressInput.value = "";
+      cityInput.value = "";
+      bankInput.value = "";
+      bankCodeInput.value = "";
+      branchInput.value = "";
+      return;
+    }
+
+    try {
+      const response = await fetch(bank_url);
+      console.log(response);
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(response);
+        districtInput.value = data.DISTRICT;
+        stateInput.value = data.STATE;
+        addressInput.value = data.ADDRESS;
+        cityInput.value = data.CITY;
+        bankInput.value = data.BANK;
+        bankCodeInput.value = data.BANKCODE;
+        branchInput.value = data.BRANCH;
+
+        const cityName = cityInput.value;
+
+        try {
+          // Make a GET request to the server to fetch weather data
+          const weatherResponse = await fetch(`/getWeather?city=${cityName}`);
+          if (weatherResponse.ok) {
+            const weatherData = await weatherResponse.json();
+            // Update the temperature and humidity input fields with the fetched data
+            temperatureInput.value = weatherData.temp;
+            humidityInput.value = weatherData.humidity;
+          } else {
+            // Clear the temperature and humidity fields if the city is not found
+            temperatureInput.value = "";
+            humidityInput.value = "";
+          }
+        } catch (error) {
+          console.error("Error fetching weather data:", error);
+        }
+      } else {
+        // Handle fetch error or invalid IFSC code
+        console.error("Failed to fetch bank details.");
+      }
+    } catch (error) {
+      console.error("Error fetching bank details:", error);
+    }
+  });
+</script>
