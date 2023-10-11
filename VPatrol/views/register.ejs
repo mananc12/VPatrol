@@ -1,41 +1,73 @@
 <%- include('partials/header') %>
 
-<div>
+<style>
+    div{
+        display: grid;
+    }
+    .container{
+        width: 40%;
+        background-color: whitesmoke;
+        margin: 20px auto 20px auto;
+        padding: 40px;
+        border-radius: 20px;
+    }
+    input{
+        border-width: 0 0 2px 0;
+        background-color: transparent;
+    }
+    button{
+        margin-top: 20px;
+        border-radius: 20px;
+        border: solid;
+        border-width:2px;
+        font-weight: 600;
+        color: rgb(53, 53, 248);
+        width: 80px;
+        height: 40px;
+        cursor: pointer;
+    }
+</style>
+
+<div class="container">
     <form action="/submit" method="POST">
+        <div>
         <h1>You have to register first</h1>
         <label>Username</label>
-        <input type="text" name="user_name" id=""><br>
+        <input type="text" name="user_name" id="" placeholder="Username"><br>
         <label>Name</label>
-        <input type="text" name="name" id=""><br>
+        <input type="text" name="name" id="" placeholder="Name"><br>
+        <label>User ID</label>
+        <input type="number" name="user_id" id="" placeholder="User ID"><br>
         <label>ID</label>
-        <input type="number" name="user_id" id=""><br>
+        <input type="number" name="id" id="" placeholder="ID"><br>
         <label>Bank accounts (comma-separated)</label>
 <input name="bank_accounts" type="text" placeholder="Account1, Account2, Account3" />
 <br>
+</div>
         <div>
         <h2>Accounts</h2>
         <label>IFSC</label>
-        <input type="text" name="ifsc" id="ifscInput">
+        <input type="text" name="ifsc" id="ifscInput" placeholder="IFSC"><br>
         <label>Bank</label>
-        <input type="text" name="bank" id="bankInput"><br>
+        <input type="text" name="bank" id="bankInput" placeholder="Bank"><br>
         <label>Branch</label>
-        <input type="text" name="branch" id="branchInput"><br>
+        <input type="text" name="branch" id="branchInput" placeholder="Branch"><br>
         <label>Address</label>
-        <input type="text" name="address" id="addressInput"><br>
+        <input type="text" name="address" id="addressInput" placeholder="Address"><br>
         <label>City</label>
-        <input type="text" name="city" id="cityInput"><br>
+        <input type="text" name="city" id="cityInput" placeholder="City"><br>
         <label>District</label>
-        <input type="text" name="district" id="districtInput"><br>
+        <input type="text" name="district" id="districtInput" placeholder="District"><br>
         <label>State</label>
-        <input type="text" name="state" id="stateInput"><br>
+        <input type="text" name="state" id="stateInput" placeholder="State"><br>
         <label>Bank Code</label>
-        <input type="text" name="bank_code" id="bankCodeInput"><br>
+        <input type="text" name="bank_code" id="bankCodeInput" placeholder="Bank Code"><br>
         <div>
-        <h3>Weather</h3>
+        <h2>Weather</h2>
 <label>Temperature</label>
-        <input type="text" name="temperature" id="temperatureInput">
+        <input type="text" name="temperature" id="temperatureInput" placeholder="Temperature in °C"><br>
         <label>Humidity</label>
-        <input type="text" name="humidity" id="humidityInput">
+        <input type="text" name="humidity" id="humidityInput" placeholder="Humidity">
     </div>
 </div>
         <button type="submit" name="submit">Submit</button>
