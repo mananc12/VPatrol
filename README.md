@@ -10,7 +10,6 @@ This is a Node.js-based web application designed to manage user accounts, store 
 - [Environment Variables](#environment-variables)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 - User registration and account management.
