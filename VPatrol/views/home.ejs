@@ -1,60 +1,124 @@
 <%- include('partials/header') %>
-<div>
+
+<style>
+  * {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+  }
+  button {
+    border-radius: 15px;
+    background-color: rgb(225, 224, 246);
+    color: rgb(70, 70, 249);
+    font-weight: 600;
+    width: 80px;
+    height: 40px;
+  }
+  input {
+    border: solid;
+    border-width: 0 0 2px 0;
+    background-color: transparent;
+  }
+  div {
+    display: grid;
+    width: 20rem;
+  }
+  .container {
+    margin: 20px auto 20px auto;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: whitesmoke;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .div-form2{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+  }
+  .form1-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .button-submit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  button{
+    cursor: pointer;
+  }
+</style>
+<div class="container">
+  <div>
     <form action="/" method="POST">
-        <label>Type your ID to check registration</label>
-        <input name="user_id" type="number" placeholder="User ID" id="id" /><br>
-        <button type="submit">Check</button>
-        <p id="text">
-            <% if (isRegistered === true) { %>
-                You are registered
-            <% } else if (isRegistered === false) { %>
-                You are not registered
-            <% } else { %>
-                
-            <% } %>
-        </p>
+        <div class="form1-div">
+      <span>Type your ID to check registration</span><br />
+      <input name="user_id" type="number" placeholder="User ID" id="id" /><br />
+      <button type="submit">Check</button><br>
+      <span id="text">
+        <% if (isRegistered === true) { %> You are registered <% } else if
+        (isRegistered === false) { %> You are not registered <% } else { %> <% }
+        %>
+      </span>
+    </div>
     </form>
-    
-        <form action="/allUsers" method="POST">
-            <label>Username</label>
-            <input name="user_name" type="text" placeholder="User Name" /><br>
-            <label>Name</label>
-            <input type="text" name="name" id=""><br>
-            <label>ID</label>
-            <input name="user_id" type="number" placeholder="User ID" id="id" /><br>
-            <label>Bank account</label>
-<input name="bank_accounts" type="text" placeholder="Account" />
-<div>
-            <h2>Accounts</h2>
-            <label>IFSC</label>
-            <input type="text" name="ifsc" id="ifscInput">
-            <label>Bank</label>
-            <input type="text" name="bank" id="bankInput"><br>
-            <label>Branch</label>
-            <input type="text" name="branch" id="branchInput"><br>
-            <label>Address</label>
-            <input type="text" name="address" id="addressInput"><br>
-            <label>City</label>
-            <input type="text" name="city" id="cityInput"><br>
-            <label>District</label>
-            <input type="text" name="district" id="districtInput"><br>
-            <label>State</label>
-            <input type="text" name="state" id="stateInput"><br>
-            <label>Bank Code</label>
-            <input type="text" name="bank_code" id="bankCodeInput"><br>
-            <div>
-            <h3>Weather</h3>
-            <label>Temperature</label>
-            <input type="text" name="temperature" id="temperatureInput">
-            <label>Humidity</label>
-            <input type="text" name="humidity" id="humidityInput">
-            </div>
-            </div>
-            <button name="submit" type="submit">Submit</button>
+  </div>
+  <form action="/allUsers" method="POST">
+    <p><button name="submit" type="submit">Register</button></p>
     </form>
+    <p>Registered users can update their details below:</p>
+  <form class="form2" action="/allUsers" method="POST">
+    <!-- <p><button name="submit" type="submit">Register</button></p> -->
+    <div class="div-form2">
+    <div class="user-details">
+        <h2>User Details</h2>
+      <label>Username</label>
+      <input name="user_name" type="text" placeholder="User Name" /><br />
+      <label>Name</label>
+      <input type="text" name="name" placeholder="Name" id="" /><br />
+      <label>ID</label>
+      <input name="user_id" type="number" placeholder="User ID" id="id" /><br />
+      <label>Bank account</label>
+      <input name="bank_accounts" type="text" placeholder="Account" />
+    </div>
+    <div class="bank-details">
+      <h2>Account Details</h2>
+      <label>IFSC</label>
+      <input type="text" name="ifsc" id="ifscInput" placeholder="IFSC" /><br />
+      <label>Bank</label>
+      <input type="text" name="bank" id="bankInput" placeholder="Bank" /><br />
+      <label>Branch</label>
+      <input type="text" name="branch" id="branchInput" placeholder="Branch" /><br />
+      <label>Address</label>
+      <input type="text" name="address" id="addressInput" placeholder="Address" /><br />
+      <label>City</label>
+      <input type="text" name="city" id="cityInput" placeholder="City" /><br />
+      <label>District</label>
+      <input type="text" name="district" id="districtInput" placeholder="District" /><br />
+      <label>State</label>
+      <input type="text" name="state" id="stateInput" placeholder="State" /><br />
+      <label>Bank Code</label>
+      <input type="text" name="bank_code" id="bankCodeInput" placeholder="Code" /><br />
+    </div>
+      <div class="weather">
+        <h2>Weather Details</h2>
+        <label>Temperature</label>
+        <input type="text" name="temperature" id="temperatureInput" placeholder="Temperature" /><br>
+        <label>Humidity</label>
+        <input type="text" name="humidity" id="humidityInput" placeholder="Humidity" />
+      </div>
+    </div>
+    <div class="button-submit">
+    <button name="submit" type="submit">Submit</button>
 </div>
-<%- include('partials/dataFeed') %>
-<%- include('partials/footer') %>
-
-
-
+  </form>
+</div>
+<%- include('partials/dataFeed') %> <%- include('partials/footer') %>
